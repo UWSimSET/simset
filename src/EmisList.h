@@ -4,7 +4,8 @@
  *				* Imaging Research Laboratory - University of
  * Washington				* (C) Copyright 1992 Department of
  * Radiology						* University of
- * Washington								* All Rights Reserved								*
+ * Washington								* All
+ * Rights Reserved 	*
  *																				*
  *********************************************************************************/
 

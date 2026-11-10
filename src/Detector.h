@@ -131,7 +131,8 @@ typedef enum
 
 #define DET_STAT_BINS 32
 #define DET_NUM_DEPTH_BINS                                                    \
-  10 /*	Number of depth bins for local statistics */
+  10 /*	Number of depth bins for local                                        \
+        statistics */
 #define DET_RANGE_OF_DET_ANGLES                                               \
   (PHGMATH_2PI) /*  Detector goes all the way around */
 

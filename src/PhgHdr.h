@@ -66,8 +66,9 @@
 #define PHG_HDR_HEADER_SIZE 32768  /* The size of our headers */
 #define PHG_HDR_HEADER_VERSION 2.0 /* The current header version */
 
-#define HDR_PHG_EVENTS_TO_SIM_ID 10000 /* replaces 10004, tag for 4 byte int  \
-                                        */
+#define HDR_PHG_EVENTS_TO_SIM_ID                                              \
+  10000 /* replaces 10004, tag for 4 byte int                                 \
+         */
 #define HDR_PHG_HEADER_SIZE_ID 10001
 #define HDR_PHG_HEADER_KIND_ID 10002
 #define HDR_PHG_HEADER_VERS_ID 10003

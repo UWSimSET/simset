@@ -198,7 +198,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 
 #endif /* GEN_UNIX */
@@ -215,7 +215,7 @@ typedef unsigned long LbUsFourByte;
 typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 #endif
 
@@ -232,7 +232,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 #endif
 
@@ -249,7 +249,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 #endif
 
@@ -278,7 +278,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 #endif /* FREE_BSD */
 
@@ -296,7 +296,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 #endif /* SGI_OS */
 
@@ -313,7 +313,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 #endif /* SGI64_OS */
 
@@ -330,7 +330,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 #endif /* ALPHA_OS */
 
@@ -347,7 +347,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 #endif /* DEC_ULTRIX */
 
@@ -364,7 +364,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 
 #endif /*	DGUX */
@@ -382,7 +382,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 
 #endif /* SUN_OS */
@@ -400,7 +400,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 
 #endif /* MPW */
@@ -418,9 +418,9 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* This should be defined in the Mac headers, but is not */
+/* This should be defined in the Mac headers, but is not */
 #define M_PI PI
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 
 #endif /* __MWERKS__ */
@@ -438,7 +438,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 
 #endif /* RS6000 */
@@ -456,7 +456,7 @@ typedef unsigned long long LbUsEightByte;
 
 typedef void *LbUserData;
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 
 #endif /* HP_OS */
@@ -478,7 +478,7 @@ typedef LbTwoByte Boolean;
 #define true 1
 #define false 0
 
-                /* Set our type flag */
+/* Set our type flag */
 #define OS_SUPPORTED
 
 #endif /* WINNT */

@@ -133,9 +133,9 @@
 #define PHOHFILE_CUR_HEADER_VERSION                                           \
   1.00 /* This is the current header version.                                 \
                                                It is also the first version   \
-          of our headers that contains a version number. As changes in the                                                            \
-          header occur so too will the header version change. All attempts                                                                 \
-          will be made to provide backward compatibility.                                              \
+          of our headers that contains a version number. As changes in the    \
+          header occur so too will the header version change. All attempts    \
+          will be made to provide backward compatibility.                     \
                                                */
 
 /* GLOBAL TYPES */
@@ -216,10 +216,10 @@ typedef union
                            analyse the file
                                                         */
     LbUsEightByte
-        SumEventsToSimulate;  /*	Total number of decays requested, this
-                                                                              value
-                                 is summed when multiple history or histogram
-                                 files are combined into one.
+        SumEventsToSimulate;  /*	Total number of decays
+                                 requested, this value is summed when
+                                 multiple history or histogram files
+                                 are combined into one.
                                                                       */
     LbUsEightByte NumPhotons; /* The number of photons in the file */
     LbUsEightByte NumDecays;  /* The number of decays in the file */

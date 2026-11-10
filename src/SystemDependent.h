@@ -115,8 +115,8 @@
 //	#include 	<fp.h>
 #include <ctype.h> // need include this inorder to use tolower()
 #define MAXFLOAT FLT_MAX
-        /* windows doesn't have a built-in strtoll, copysign, so we #define
-         * them here... */
+/* windows doesn't have a built-in strtoll, copysign, so we #define
+ * them here... */
 #define strtoll _strtoi64
 #define copysign(val, signval)                                                \
   (((signval) < 0) ? (-fabs (val)) : (fasbs (val)))

@@ -1,63 +1,63 @@
 /*********************************************************************************
-*                                                                                *
-*                       Source code developed by the                             *
-*           Imaging Research Laboratory - University of Washington               *
-*               (C) Copyright 2006-2012 Department of Radiology                  *
-*                           University of Washington                             *
-*                              All Rights Reserved                               *
-*                                                                                *
-*********************************************************************************/
- 
+ *                                                                                *
+ *                       Source code developed by the                             *
+ *           Imaging Research Laboratory - University of Washington               *
+ *               (C) Copyright 2006-2012 Department of Radiology                  *
+ *                           University of Washington                             *
+ *                              All Rights Reserved                               *
+ *                                                                                *
+ *********************************************************************************/
+
 /*********************************************************************************
-*
-*			Module Name:		addrandUsr.c
-*			Revision Number:	2.2
-*			Date last revised:	1 February 2012
-*			Programmer:			Robert Harrison
-*			Date Originated:	17 February 2006
-*
-*			Module Overview:	This module is provided for individuals to
-*								alter the processing of the decays in a time
-*								window during addrandoms.c.  For instance,
-*								this would be a place where the user could
-*								implement changes to the way triples are
-*								handled (SimSET rejects them by default) or
-*								system specific detector/electronics 
-*								algorithms.
-*
-*			References:			
-*
-**********************************************************************************
-*
-*			Global functions defined:
-*
-*			Global variables defined:
-*					addrandUsrParamsFPtr
-*					addrandUsrModDecays1FPtr
-*					addrandUsrModDecays2FPtr
-*					addrandUsrTerminateFPtr
-*
-**********************************************************************************
-*
-*			Revision Section (Also update version number, if relevant)
-*
-*			Programmer(s):		
-*
-*			Revision date:		
-*
-*			Revision description:	
-*
-**********************************************************************************
-*
-*			Revision Section (Also update version number, if relevant)
-*
-*			Programmer(s):		Steven Gillispie
-*
-*			Revision date:		1 February 2012
-*
-*			Revision description:	Changed form of user functions to pointers
-*
-*********************************************************************************/
+ *
+ *			Module Name:		addrandUsr.c
+ *			Revision Number:	2.2
+ *			Date last revised:	1 February 2012
+ *			Programmer:			Robert Harrison
+ *			Date Originated:	17 February 2006
+ *
+ *			Module Overview:	This module is provided for individuals to
+ *								alter the processing of the decays in a time
+ *								window during addrandoms.c.  For instance,
+ *								this would be a place where the user could
+ *								implement changes to the way triples are
+ *								handled (SimSET rejects them by default) or
+ *								system specific detector/electronics
+ *								algorithms.
+ *
+ *			References:
+ *
+ **********************************************************************************
+ *
+ *			Global functions defined:
+ *
+ *			Global variables defined:
+ *					addrandUsrParamsFPtr
+ *					addrandUsrModDecays1FPtr
+ *					addrandUsrModDecays2FPtr
+ *					addrandUsrTerminateFPtr
+ *
+ **********************************************************************************
+ *
+ *			Revision Section (Also update version number, if relevant)
+ *
+ *			Programmer(s):
+ *
+ *			Revision date:
+ *
+ *			Revision description:
+ *
+ **********************************************************************************
+ *
+ *			Revision Section (Also update version number, if relevant)
+ *
+ *			Programmer(s):		Steven Gillispie
+ *
+ *			Revision date:		1 February 2012
+ *
+ *			Revision description:	Changed form of user functions to pointers
+ *
+ *********************************************************************************/
 
 #define ADD_RANDOMS_USER
 
@@ -99,23 +99,21 @@
 #include "addrandoms.h"
 #include "addrandUsr.h"
 
-
 /* #include files with your user function software below.  We include the file for containing
  the triples processing user function example. */
 #include "addrandUsr_procTriples.c"
 
-/* Point to the user functions you want to use here.  Each user function is pointed to by 
-	one of the variables below.  To *not* use a user function set the variable 
-	to NULL, as the  commented-out line for each pointer shows below.  To use one, set
-	the function pointer to the desired function.  Below we set the pointers to functions in
-	the file addrandUsrSample.c, which is #included above. */
-addrandUsrParamsFType		*addrandUsrInitializeFPtr = procTriplesInitialize;
+/* Point to the user functions you want to use here.  Each user function is pointed to by
+        one of the variables below.  To *not* use a user function set the variable
+        to NULL, as the  commented-out line for each pointer shows below.  To use one, set
+        the function pointer to the desired function.  Below we set the pointers to functions in
+        the file addrandUsrSample.c, which is #included above. */
+addrandUsrParamsFType* addrandUsrInitializeFPtr = procTriplesInitialize;
 
-addrandUsrDets1FType		*addrandUsrModDecays1FPtr = procTriplesProcess;
+addrandUsrDets1FType* addrandUsrModDecays1FPtr = procTriplesProcess;
 
-addrandUsrDets2FType		*addrandUsrModDecays2FPtr = NULL;
+addrandUsrDets2FType* addrandUsrModDecays2FPtr = NULL;
 
-addrandUsrParamsFType		*addrandUsrTerminateFPtr = procTriplesTerminate;
-
+addrandUsrParamsFType* addrandUsrTerminateFPtr = procTriplesTerminate;
 
 #undef ADD_RANDOMS_USER

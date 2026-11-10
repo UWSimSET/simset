@@ -16,8 +16,6 @@
 
 *********************************************************************************/
 
- 
-
 /*********************************************************************************
 
 *
@@ -52,7 +50,7 @@
 
 *
 
-*			References:			
+*			References:
 
 *
 
@@ -76,15 +74,15 @@
 
 *
 
-*			Programmer(s):		
+*			Programmer(s):
 
 *
 
-*			Revision date:		
+*			Revision date:
 
 *
 
-*			Revision description:	
+*			Revision description:
 
 *
 
@@ -104,17 +102,13 @@
 
 *
 
-*			Revision description:	This file started as a revision of S. 
+*			Revision description:	This file started as a revision of S.
 
 *								Gillispie's addrandUsr.c version 2.2.
 
 *
 
 *********************************************************************************/
-
-
-
-
 
 /* Global variables for addrandUsrSample */
 
@@ -124,9 +118,9 @@
 
 ##
 
-	Local globals are declared within the addrandUsrSampleVars struct below.  This will prevent any
+        Local globals are declared within the addrandUsrSampleVars struct below.  This will prevent any
 
-		problems with naming and scope.
+                problems with naming and scope.
 
 ##
 
@@ -136,17 +130,13 @@
 
 struct {
 
-	/* Your fields of choice go here */
+        /* Your fields of choice go here */
 
-	LbEightByte numModDecays1Calls;		/* number of calls to the first ModDecays function */
+        LbEightByte numModDecays1Calls; /* number of calls to the first ModDecays function */
 
-	LbEightByte numModDecays2Calls;		/* number of calls to the second ModDecays function */
+        LbEightByte numModDecays2Calls; /* number of calls to the second ModDecays function */
 
 } addrandUsrSampleVars;
-
-
-
-
 
 /*********************************************************************************
 
@@ -186,9 +176,9 @@ struct {
 
 *			sample.
 
-*			
+*
 
-* 
+*
 
 *
 
@@ -198,11 +188,11 @@ struct {
 
 *						This is a ptr to the detector parameters. It
 
-*						is assumed that you will treat this as 
+*						is assumed that you will treat this as
 
-*						a read-only structure. Modifications should 
+*						a read-only structure. Modifications should
 
-*						only be made after a careful study of 
+*						only be made after a careful study of
 
 *						the parameters involved.
 
@@ -214,33 +204,22 @@ struct {
 
 *********************************************************************************/
 
-void addrandUsrSampleInitialize(DetRunTimeParamsTy	*detParams)
+void addrandUsrSampleInitialize( DetRunTimeParamsTy* detParams )
 
 {
 
-	/* Do your initialization here */
+        /* Do your initialization here */
 
-	
+        DetRunTimeParamsTy* myDetParams;
 
-	DetRunTimeParamsTy		*myDetParams;
+        myDetParams = detParams; /* Removes unused parameter compiler warning */
 
-	
+        /* initialize counters for the number of calls to the ModDecay functions */
 
-	myDetParams = detParams;	/* Removes unused parameter compiler warning */
+        addrandUsrSampleVars.numModDecays1Calls = 0;
 
-	
-
-	/* initialize counters for the number of calls to the ModDecay functions */
-
-	addrandUsrSampleVars.numModDecays1Calls = 0;
-
-	addrandUsrSampleVars.numModDecays1Calls = 0;
-
-	
-
+        addrandUsrSampleVars.numModDecays1Calls = 0;
 }
-
-
 
 /*********************************************************************************
 
@@ -258,17 +237,17 @@ void addrandUsrSampleInitialize(DetRunTimeParamsTy	*detParams)
 
 *				This function is assigned to the function pointer
 
-*				addrandUsrModDecays1FPtr, which is called before the 
+*				addrandUsrModDecays1FPtr, which is called before the
 
-*				photons/decays are time-windowed.  All the decays within 
+*				photons/decays are time-windowed.  All the decays within
 
-*				the coincidence resolution time of each other (or 
+*				the coincidence resolution time of each other (or
 
 *				actually longer: the window is extended each time another
 
 *				photon arrives less than the res. time after the previous
 
-*				photon) are passed in the 
+*				photon) are passed in the
 
 *				timeWindowDetectionsTy structure.  The photons and decays
 
@@ -282,13 +261,13 @@ void addrandUsrSampleInitialize(DetRunTimeParamsTy	*detParams)
 
 *				understand the data structure first!
 
-*					
+*
 
 *
 
 *		Arguments:
 
-*			timeWindowDetectionsTy	*timeWindowDetections - 
+*			timeWindowDetectionsTy	*timeWindowDetections -
 
 *					All the decays in the current time window
 
@@ -300,53 +279,38 @@ void addrandUsrSampleInitialize(DetRunTimeParamsTy	*detParams)
 
 *********************************************************************************/
 
-void addrandUsrSampleModDecays1(timeWindowDetectionsTy	*timeWindowDetectionsPtr,
+void addrandUsrSampleModDecays1( timeWindowDetectionsTy* timeWindowDetectionsPtr,
 
-							PhoHFileHkTy			*adrandRandomsFileHk, 
+                                 PhoHFileHkTy* adrandRandomsFileHk,
 
-							LbUsFourByte			*numDecaysWritten, 
+                                 LbUsFourByte* numDecaysWritten,
 
-							LbUsFourByte			*numDecaysUnchanged, 
+                                 LbUsFourByte* numDecaysUnchanged,
 
-							LbUsFourByte			*numDecaysRandom, 
+                                 LbUsFourByte* numDecaysRandom,
 
-							LbUsFourByte			*numLostCorrectWindow, 
+                                 LbUsFourByte* numLostCorrectWindow,
 
-							LbUsFourByte			*numDecaysLostTriples)
+                                 LbUsFourByte* numDecaysLostTriples )
 
 {
 
-	timeWindowDetectionsTy		*myTimeWindowDetectionsPtr;
+        timeWindowDetectionsTy* myTimeWindowDetectionsPtr;
 
-	
+        myTimeWindowDetectionsPtr = timeWindowDetectionsPtr; /* Removes unused parameter compiler warning */
 
-	myTimeWindowDetectionsPtr = timeWindowDetectionsPtr;	/* Removes unused parameter compiler warning */
+        /* Make your alterations here */
 
-	
+        do {
 
-	
+                /* increment the number of calls to this function */
 
-	/* Make your alterations here */
+                addrandUsrSampleVars.numModDecays1Calls += 1;
 
-	do {
+        } while (false);
 
-		
-
-		/* increment the number of calls to this function */
-
-		addrandUsrSampleVars.numModDecays1Calls += 1;
-
-		
-
-	} while (false);
-
-	
-
-	return;
-
+        return;
 }
-
-
 
 /*********************************************************************************
 
@@ -364,25 +328,25 @@ void addrandUsrSampleModDecays1(timeWindowDetectionsTy	*timeWindowDetectionsPtr,
 
 *				This function is assigned to the function pointer
 
-*				addrandUsrModDecays2FPtr, which is called  after the 
+*				addrandUsrModDecays2FPtr, which is called  after the
 
-*				photons/decays are time-windowed.  Only the decays that are 
+*				photons/decays are time-windowed.  Only the decays that are
 
 *				going to be written out will be passed to this routine - many
 
 *				of the decays/time windows passed to addrandUsrSampleModDecays1
 
-*				will not generate a call to this function.  This 
+*				will not generate a call to this function.  This
 
-*				function gives the user a chance to change/reject the 
+*				function gives the user a chance to change/reject the
 
 *				coincidences that are getting written out.
 
-*					
+*
 
 *		Arguments:
 
-*			timeWindowDetectionsTy	*timeWindowDetections - 
+*			timeWindowDetectionsTy	*timeWindowDetections -
 
 *					All the decays in the current time window
 
@@ -396,63 +360,44 @@ void addrandUsrSampleModDecays1(timeWindowDetectionsTy	*timeWindowDetectionsPtr,
 
 *********************************************************************************/
 
-Boolean addrandUsrSampleModDecays2(timeWindowDetectionsTy	*timeWindowDetectionsPtr,
+Boolean addrandUsrSampleModDecays2( timeWindowDetectionsTy* timeWindowDetectionsPtr,
 
-							PhoHFileHkTy			*adrandRandomsFileHk, 
+                                    PhoHFileHkTy* adrandRandomsFileHk,
 
-							LbUsFourByte			*numDecaysWritten, 
+                                    LbUsFourByte* numDecaysWritten,
 
-							LbUsFourByte			*numDecaysUnchanged, 
+                                    LbUsFourByte* numDecaysUnchanged,
 
-							LbUsFourByte			*numDecaysRandom, 
+                                    LbUsFourByte* numDecaysRandom,
 
-							LbUsFourByte			*numLostCorrectWindow, 
+                                    LbUsFourByte* numLostCorrectWindow,
 
-							LbUsFourByte			*numDecaysLostTriples)
+                                    LbUsFourByte* numDecaysLostTriples )
 
+{
 
+        Boolean acceptCoincidence = false; /* Should coincidence be added to history list? */
 
-{	
+        timeWindowDetectionsTy* myTimeWindowDetectionsPtr;
 
-	Boolean	acceptCoincidence = false;	/* Should coincidence be added to history list? */
+        myTimeWindowDetectionsPtr = timeWindowDetectionsPtr; /* Removes unused parameter compiler warning */
 
-	timeWindowDetectionsTy			*myTimeWindowDetectionsPtr;
+        /* Make your alterations here */
 
-	
+        do {
 
-	myTimeWindowDetectionsPtr = timeWindowDetectionsPtr;	/* Removes unused parameter compiler warning */
+                /* increment the number of calls to this function */
 
-	
+                addrandUsrSampleVars.numModDecays2Calls += 1;
 
-	
+                /* Set acceptance to true if we made it to here */
 
-	/* Make your alterations here */
+                acceptCoincidence = true;
 
-	do {
+        } while (false);
 
-		
-
-		/* increment the number of calls to this function */
-
-		addrandUsrSampleVars.numModDecays2Calls += 1;
-
-		
-
-		/* Set acceptance to true if we made it to here */
-
-		acceptCoincidence = true;
-
-	
-
-	} while (false);
-
-	
-
-	return (acceptCoincidence);
-
+        return ( acceptCoincidence );
 }
-
-
 
 /*********************************************************************************
 
@@ -470,9 +415,9 @@ Boolean addrandUsrSampleModDecays2(timeWindowDetectionsTy	*timeWindowDetectionsP
 
 *			addrandUsrTerminateFPtr, which is called at the
 
-*			beginning of adrandTerminate in addrandoms.c.  This 
+*			beginning of adrandTerminate in addrandoms.c.  This
 
-*			function pointer is the one to use to do any termination 
+*			function pointer is the one to use to do any termination
 
 *			required by the user functions (e.g. report statistics,
 
@@ -486,11 +431,11 @@ Boolean addrandUsrSampleModDecays2(timeWindowDetectionsTy	*timeWindowDetectionsP
 
 *						This is a ptr to the detector parameters. It
 
-*						is assumed that you will treat this as 
+*						is assumed that you will treat this as
 
-*						a read-only structure. Modifications should 
+*						a read-only structure. Modifications should
 
-*						only be made after a careful study of 
+*						only be made after a careful study of
 
 *						the parameters involved.
 
@@ -502,35 +447,25 @@ Boolean addrandUsrSampleModDecays2(timeWindowDetectionsTy	*timeWindowDetectionsP
 
 *********************************************************************************/
 
-void addrandUsrSampleTerminate(DetRunTimeParamsTy	*detParams)
+void addrandUsrSampleTerminate( DetRunTimeParamsTy* detParams )
 
 {
 
-	DetRunTimeParamsTy		*myDetParams;
+        DetRunTimeParamsTy* myDetParams;
 
-	
+        myDetParams = detParams; /* Removes unused parameter compiler warning */
 
-	myDetParams = detParams;	/* Removes unused parameter compiler warning */
+        /* Do your finishing here */
 
-	
+        /* we just report the number calls to the ModDecay functions */
 
-	/* Do your finishing here */
+        LbInPrintf( "\n\n\n\tSAMPLE ADDRAND USER MODULE REPORT" );
 
-	/* we just report the number calls to the ModDecay functions */
+        LbInPrintf( "\n\tNumber of calls to addrandUsrSampleModDecays1 is %lld",
 
-	LbInPrintf("\n\n\n\tSAMPLE ADDRAND USER MODULE REPORT");
+                    addrandUsrSampleVars.numModDecays1Calls );
 
-	LbInPrintf("\n\tNumber of calls to addrandUsrSampleModDecays1 is %lld",
+        LbInPrintf( "\n\tNumber of calls to addrandUsrSampleModDecays2 is %lld\n\n",
 
-				addrandUsrSampleVars.numModDecays1Calls);
-
-	LbInPrintf("\n\tNumber of calls to addrandUsrSampleModDecays2 is %lld\n\n",
-
-				addrandUsrSampleVars.numModDecays2Calls);
-
-				
-
+                    addrandUsrSampleVars.numModDecays2Calls );
 }
-
-
-

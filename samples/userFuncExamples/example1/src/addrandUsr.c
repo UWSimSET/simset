@@ -16,8 +16,6 @@
 
 *********************************************************************************/
 
- 
-
 /*********************************************************************************
 
 *
@@ -46,13 +44,13 @@
 
 *								handled (SimSET rejects them by default) or
 
-*								system specific detector/electronics 
+*								system specific detector/electronics
 
 *								algorithms.
 
 *
 
-*			References:			
+*			References:
 
 *
 
@@ -84,15 +82,15 @@
 
 *
 
-*			Programmer(s):		
+*			Programmer(s):
 
 *
 
-*			Revision date:		
+*			Revision date:
 
 *
 
-*			Revision description:	
+*			Revision description:
 
 *
 
@@ -118,9 +116,9 @@
 
 *								from the user guide.  It and three other examples
 
-*								can be found in the SimSET subdirectories 
+*								can be found in the SimSET subdirectories
 
-*								samples/userFuncExamples/example1, example2, 
+*								samples/userFuncExamples/example1, example2,
 
 *								example3, and example3.  See the User Functions
 
@@ -152,11 +150,7 @@
 
 *********************************************************************************/
 
-
-
 #define ADD_RANDOMS_USER
-
-
 
 #include <stdio.h>
 
@@ -164,11 +158,7 @@
 
 #include <time.h>
 
-
-
 #include "SystemDependent.h"
-
-
 
 #include "LbTypes.h"
 
@@ -189,8 +179,6 @@
 #include "LbHeader.h"
 
 #include "LbTiming.h"
-
-
 
 #include "Photon.h"
 
@@ -232,93 +220,72 @@
 
 #include "addrandUsr.h"
 
-
-
-
-
 /* Local Prototypes - here we add prototypes for our new functions */
 
-void addrandUsrSampleInitialize(DetRunTimeParamsTy	*detParams);
+void addrandUsrSampleInitialize( DetRunTimeParamsTy* detParams );
 
-void addrandUsrSampleModDecays1(	timeWindowDetectionsTy	*timeWindowDetectionsPtr,
+void addrandUsrSampleModDecays1( timeWindowDetectionsTy* timeWindowDetectionsPtr,
 
-									PhoHFileHkTy			*adrandRandomsFileHk, 
+                                 PhoHFileHkTy* adrandRandomsFileHk,
 
-									LbUsFourByte			*numDecaysWritten, 
+                                 LbUsFourByte* numDecaysWritten,
 
-									LbUsFourByte			*numDecaysUnchanged, 
+                                 LbUsFourByte* numDecaysUnchanged,
 
-									LbUsFourByte			*numDecaysRandom, 
+                                 LbUsFourByte* numDecaysRandom,
 
-									LbUsFourByte			*numLostCorrectWindow, 
+                                 LbUsFourByte* numLostCorrectWindow,
 
-									LbUsFourByte			*numDecaysLostTriples);
+                                 LbUsFourByte* numDecaysLostTriples );
 
-Boolean addrandUsrSampleModDecays2(	timeWindowDetectionsTy	*timeWindowDetectionsPtr,
+Boolean addrandUsrSampleModDecays2( timeWindowDetectionsTy* timeWindowDetectionsPtr,
 
-									PhoHFileHkTy			*adrandRandomsFileHk, 
+                                    PhoHFileHkTy* adrandRandomsFileHk,
 
-									LbUsFourByte			*numDecaysWritten, 
+                                    LbUsFourByte* numDecaysWritten,
 
-									LbUsFourByte			*numDecaysUnchanged, 
+                                    LbUsFourByte* numDecaysUnchanged,
 
-									LbUsFourByte			*numDecaysRandom, 
+                                    LbUsFourByte* numDecaysRandom,
 
-									LbUsFourByte			*numLostCorrectWindow, 
+                                    LbUsFourByte* numLostCorrectWindow,
 
-									LbUsFourByte			*numDecaysLostTriples);
+                                    LbUsFourByte* numDecaysLostTriples );
 
-void addrandUsrSampleTerminate(DetRunTimeParamsTy	*detParams);
+void addrandUsrSampleTerminate( DetRunTimeParamsTy* detParams );
 
 /*   Declare your local prototypes here as well */
 
-
-
-
-
-/* The following #include file gives the user functions for the above prototypes - 
+/* The following #include file gives the user functions for the above prototypes -
 
    they are pointed to below. */
 
 #include "addrandUsrSample.c"
 
+/* Point to the user functions you want to use here.  Each user function is pointed to by
 
+        one of the variables below.  To *not* use a user function set the variable
 
-/* Point to the user functions you want to use here.  Each user function is pointed to by 
+        to NULL, as the  commented-out line for each pointer shows below.  To use one, set
 
-	one of the variables below.  To *not* use a user function set the variable 
+        the function pointer to the desired function.  Below we set the pointers to functions in
 
-	to NULL, as the  commented-out line for each pointer shows below.  To use one, set
-
-	the function pointer to the desired function.  Below we set the pointers to functions in
-
-	the file addrandUsrSample.c, which is #included above. */
+        the file addrandUsrSample.c, which is #included above. */
 
 /*addrandUsrParamsFType		*addrandUsrInitializeFPtr = NULL;*/
 
-addrandUsrParamsFType		*addrandUsrInitializeFPtr = addrandUsrSampleInitialize;
-
-
+addrandUsrParamsFType* addrandUsrInitializeFPtr = addrandUsrSampleInitialize;
 
 /*addrandUsrDets1FType		*addrandUsrModDecays1FPtr = NULL;*/
 
-addrandUsrDets1FType		*addrandUsrModDecays1FPtr = addrandUsrSampleModDecays1;
-
-
+addrandUsrDets1FType* addrandUsrModDecays1FPtr = addrandUsrSampleModDecays1;
 
 /*addrandUsrDets2FType		*addrandUsrModDecays2FPtr = NULL;*/
 
-addrandUsrDets2FType		*addrandUsrModDecays2FPtr = addrandUsrSampleModDecays2;
-
-
+addrandUsrDets2FType* addrandUsrModDecays2FPtr = addrandUsrSampleModDecays2;
 
 /*addrandUsrParamsFType		*addrandUsrTerminateFPtr = NULL;*/
 
-addrandUsrParamsFType		*addrandUsrTerminateFPtr = addrandUsrSampleTerminate;
-
-
-
-
+addrandUsrParamsFType* addrandUsrTerminateFPtr = addrandUsrSampleTerminate;
 
 #undef ADD_RANDOMS_USER
-

@@ -4,8 +4,10 @@ This repository is the latest release of UW SimSET (2.9.2), from 2014.
 
 This page is under construction. Please contact simset@uw.edu for more information. 
 
-Until the documentation is moved, please see the user guide and documentation on SimSET's legacy website:
+To receive email (very occasional) SimSET updates, please add your address to the *new* SimSET email list: 
+https://mailman11.u.washington.edu/mailman/listinfo/simset_users
 
+Until the documentation is moved, please see the user guide and documentation on SimSET's legacy website:
 https://depts.washington.edu/simset/html/simset_main.html
 
 # About

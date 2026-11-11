@@ -43,7 +43,7 @@
 
 # Change SIMSET_PATH to the directory where you installed SimSET
 # (In the current version, SIMSET_PATH cannot contain any spaces.)
-SIMSET_PATH = /Users/useruser/Desktop/2.9.2
+SIMSET_PATH ?= $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/..)
 
 # If you are building a separated user function version of SimSET, 
 #   change SIMSET_PATH_USR to the top directory of your separate version.
@@ -76,7 +76,7 @@ UNAME := $(shell uname)
 
 ifeq ($(UNAME), Darwin)
     # Suggested compiler flags for Macintosh Unix (Darwin)
-    OS_CFLAGS = -DDARWIN -g
+    OS_CFLAGS = -DDARWIN -Wall -g
 else
     # ifeq ($(UNAME), Linux)
     # Suggested compiler flags for LINUX
@@ -90,7 +90,7 @@ COMPILER = cc
 # Select the debug or nodebug CFLAGS option:  debug has added data checking
 #  and is recommended
 # Choose between the last two options instead if your compiler does not yet support -iquote
-CFLAGS = ${OS_CFLAGS} -c -DPHG_DEBUG -iquote"${PHG_SRC}" -DkSimSET_Path='"${SIMSET_PATH}"' 
+CFLAGS = ${OS_CFLAGS} -c -DPHG_DEBUG -std=gnu89 -fPIC -iquote"${PHG_SRC}" -DkSimSET_Path='"${SIMSET_PATH}"'
 # CFLAGS = ${OS_CFLAGS} -c -iquote"${PHG_SRC}" -DkSimSET_Path='"${SIMSET_PATH}"' 
 # 
 # CFLAGS = ${OS_CFLAGS} -c -DPHG_DEBUG -I"${PHG_SRC}" -DkSimSET_Path='"${SIMSET_PATH}"' 
@@ -525,3 +525,22 @@ ${OBJ_DIR}/PhgUsrBin.o: ${MKFILE} ${PHG_SRC}/PhgUsrBin.c \
 				 $(PHG_HDRS)
 	${COMPILER} ${CFLAGS} -o ${OBJ_DIR}/PhgUsrBin.o ${PHG_SRC}/PhgUsrBin.c
 
+ifeq ($(UNAME), Darwin)
+LIBRARY = $(SIMSET_PATH)/lib/libsimset.dylib
+SHARED_LDFLAGS = -dynamiclib
+else
+LIBRARY = $(SIMSET_PATH)/lib/libsimset.so
+SHARED_LDFLAGS = -shared
+endif
+
+$(OBJECTS): | $(OBJ_DIR)
+
+$(OBJ_DIR):
+	@mkdir -p "$@"
+
+.PHONY: lib
+lib: $(LIBRARY)
+
+$(LIBRARY): $(MKFILE) $(filter-out $(OBJ_DIR)/simset.o,$(OBJECTS))
+	@mkdir -p "$(@D)"
+	$(COMPILER) $(SHARED_LDFLAGS) -o "$@" $(filter %.o,$^) -lm

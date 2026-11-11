@@ -80,7 +80,6 @@
 #ifdef DGUX
 #include <math.h>
 #include <sys/m88kbcs.h>
-#include <values.h>
 #elif MPW
 #include <CursorCtl.h>
 #include <ErrMgr.h>
@@ -94,6 +93,7 @@
 #define APP_DEBUG
 #elif defined GEN_UNIX
 #include <float.h>
+#include <limits.h>
 #include <math.h>
 #include <sys/stat.h>
 #include <sys/times.h>

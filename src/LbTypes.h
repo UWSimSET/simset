@@ -487,7 +487,7 @@ typedef LbTwoByte Boolean;
 
 /* Verify they have defined a supported OS */
 #ifndef OS_SUPPORTED
-You have not declared an OS - dependent clause in LbTypes.h
+#error You have not declared an OS-dependent clause in LbTypes.h
 #endif
 
 #endif /* LB_TYPE_HDR */

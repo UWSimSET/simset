@@ -143,3 +143,20 @@ install(FILES
   "${CMAKE_CURRENT_BINARY_DIR}/SimSETConfigVersion.cmake"
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SimSET
 )
+
+if(SIMSET_BUILD_TOOLS)
+  # Create symlinks
+  set (LINKS phg bin phgbin convert buildatt combinebin combinehist reversebytes
+  displayheader makeindexfile ttest stripheader migrate phgswap printheader
+  convertheader calcattenuation attncorrect collapse extract collapse3d
+  bcomp extractlines buildcoh line3d scale convertcoh timesort addrandoms
+  resampledecaytimes)
+  foreach(link IN LISTS LINKS)
+    INSTALL(CODE "execute_process( \
+      COMMAND ${CMAKE_COMMAND} -E create_symlink \
+      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}/simset \
+      ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_BINDIR}/${link}   \
+      )"
+    )
+  endforeach()
+endif()

@@ -1,47 +1,46 @@
 #ifndef PRINT_HEADER
 #define PRINT_HEADER
 
-
 #include <stdio.h>
 #include <string.h>
 
 #include "SystemDependent.h"
 
-#include "LbTypes.h"
-#include "LbError.h"
 #include "LbDebug.h"
 #include "LbEnvironment.h"
+#include "LbError.h"
 #include "LbFile.h"
-#include "LbMemory.h"
-#include "LbInterface.h"
-#include "LbParamFile.h"
 #include "LbHeader.h"
+#include "LbInterface.h"
+#include "LbMemory.h"
+#include "LbParamFile.h"
+#include "LbTypes.h"
 
-#include "Photon.h"
-#include "PhgParams.h"
-#include "ColTypes.h"
 #include "ColParams.h"
-#include "DetTypes.h"
-#include "DetParams.h"
-#include "CylPos.h"
-#include "PhgMath.h"
-#include "PhoHFile.h"
-#include "ProdTbl.h"
-#include "PhoTrk.h"
-#include "SubObj.h"
-#include "EmisList.h"
+#include "ColTypes.h"
 #include "Collimator.h"
+#include "CylPos.h"
+#include "DetParams.h"
+#include "DetTypes.h"
 #include "Detector.h"
-#include "PhgHdr.h"
-#include "phg.h"
+#include "EmisList.h"
 #include "PhgBin.h"
-
+#include "PhgHdr.h"
+#include "PhgMath.h"
+#include "PhgParams.h"
+#include "PhoHFile.h"
+#include "PhoTrk.h"
+#include "Photon.h"
+#include "ProdTbl.h"
+#include "SubObj.h"
+#include "phg.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
-Boolean         PrintHeader(int argc, char *argv[]);
+  Boolean PrintHeader (int argc, char *argv[]);
 
 #ifdef __cplusplus
 }

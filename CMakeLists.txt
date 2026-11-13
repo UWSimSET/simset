@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
 project(SimSET VERSION 2.9.2 LANGUAGES C)
 
+# we will install files in include/${VERSIONDIR}, lib/cmake/${VERSIONDIR}
+set (VERSION_DIR SimSET-${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR})
+
 set(CMAKE_C_STANDARD 90)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
@@ -51,7 +54,7 @@ add_library(SimSET::iface ALIAS simset_iface)
 set_target_properties(simset_iface PROPERTIES EXPORT_NAME iface)
 target_include_directories(simset_iface INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/simset>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${VERSIONDIR}/simset>
 )
 target_compile_definitions(simset_iface INTERFACE ${SIMSET_DEFS}
 kSimSET_Path="${CMAKE_CURRENT_SOURCE_DIR}")
@@ -76,6 +79,10 @@ if(SIMSET_BUILD_SHARED)
   add_library(SimSET::simset_shared ALIAS simset_shared)
   target_link_libraries(simset_shared PUBLIC simset_iface)
   set_target_properties(simset_shared PROPERTIES OUTPUT_NAME simset)
+  set_target_properties(simset_shared PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    SOVERSION ${PROJECT_VERSION_MAJOR}
+  )
   if(APPLE)
     set_target_properties(simset_shared PROPERTIES INSTALL_NAME_DIR "@rpath")
   endif()
@@ -100,7 +107,7 @@ endif()
 
 # ---- Install headers ----
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src/"
-  DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/simset"
+  DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${VERSION_DIR}/simset"
   FILES_MATCHING PATTERN "*.h"
 )
 
@@ -122,14 +129,14 @@ endif()
 
 install(EXPORT SimSETTargets
   NAMESPACE SimSET::
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SimSET
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${VERSION_DIR}
 )
 
 # ---- Package config ----
 configure_package_config_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/cmake/SimSETConfig.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/SimSETConfig.cmake"
-  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SimSET
+  INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${VERSION_DIR}
 )
 
 write_basic_package_version_file(
@@ -141,7 +148,7 @@ write_basic_package_version_file(
 install(FILES
   "${CMAKE_CURRENT_BINARY_DIR}/SimSETConfig.cmake"
   "${CMAKE_CURRENT_BINARY_DIR}/SimSETConfigVersion.cmake"
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/SimSET
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${VERSION_DIR}
 )
 
 if(SIMSET_BUILD_TOOLS)

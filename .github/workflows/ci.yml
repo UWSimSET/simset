@@ -42,4 +42,12 @@ jobs:
           -DCMAKE_INSTALL_RPATH:PATH="\${INSTALL_DIR}/lib"
         cmake --build build --config Release
         cmake --install build
+    
+    - name: Build external
+      run: |
+        cd test_external
+        # find location of CMake file independent of version
+        # (line is only ok if there's only one!)
+        location=`echo ../install/lib/cmake/SimSET-*`
+        cmake -B build -S . -DSimSET_DIR=${location}
 

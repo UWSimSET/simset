@@ -90,7 +90,7 @@ COMPILER = cc
 # Select the debug or nodebug CFLAGS option:  debug has added data checking
 #  and is recommended
 # Choose between the last two options instead if your compiler does not yet support -iquote
-CFLAGS = ${OS_CFLAGS} -c -DPHG_DEBUG -std=gnu89 -fPIC -iquote"${PHG_SRC}" -DkSimSET_Path='"${SIMSET_PATH}"'
+CFLAGS = ${OS_CFLAGS} -c -DPHG_DEBUG -std=gnu90 -fPIC -iquote"${PHG_SRC}" -DkSimSET_Path='"${SIMSET_PATH}"'
 # CFLAGS = ${OS_CFLAGS} -c -iquote"${PHG_SRC}" -DkSimSET_Path='"${SIMSET_PATH}"' 
 # 
 # CFLAGS = ${OS_CFLAGS} -c -DPHG_DEBUG -I"${PHG_SRC}" -DkSimSET_Path='"${SIMSET_PATH}"' 

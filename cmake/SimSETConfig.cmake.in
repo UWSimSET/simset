@@ -1,0 +1,12 @@
+@PACKAGE_INIT@
+include("${CMAKE_CURRENT_LIST_DIR}/SimSETTargets.cmake")
+
+if(TARGET SimSET::simset)
+  return()
+endif()
+
+if(TARGET SimSET::simset_shared)
+  add_library(SimSET::simset ALIAS SimSET::simset_shared)
+elseif(TARGET SimSET::simset_static)
+  add_library(SimSET::simset ALIAS SimSET::simset_static)
+endif()
